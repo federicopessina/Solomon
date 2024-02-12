@@ -9,13 +9,13 @@ public:
 	Order(std::string id, bool isBuy, double price, int volume, std::string ticker, std::string client);
 	~Order();
 
-	std::string getId();
-	std::time_t getTimestamp();
-	bool getIsBuy();
-	double getPrice();
-	int getVolume();
-	std::string getTicker();
-	std::string getClient();
+	std::string getId() const;
+	std::time_t getTimestamp() const;
+	bool getIsBuy() const;
+	double getPrice() const;
+	int getVolume() const;
+	std::string getTicker() const;
+	std::string getClient() const;
 
 private:
 	std::string	m_id;

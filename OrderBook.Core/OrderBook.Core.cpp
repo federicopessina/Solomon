@@ -17,9 +17,9 @@ int main()
 
 	auto store = new Store();
 
-	store->add(*order1);
-	store->add(*order2);
 	store->add(*order3);
+	store->add(*order2);
+	store->add(*order1);
 
 	for (auto item : store->get())
 	{

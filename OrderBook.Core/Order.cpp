@@ -18,37 +18,37 @@ Order::~Order()
 {
 }
 
-std::string Order::getId()
+std::string Order::getId() const
 {
-	return this->m_id;
+	return m_id;
 }
 
-std::time_t Order::getTimestamp()
+std::time_t Order::getTimestamp() const
 {
-	return this->m_timestamp;
+	return m_timestamp;
 }
 
-bool Order::getIsBuy()
+bool Order::getIsBuy() const
 {
-	return this->m_isBuy;
+	return m_isBuy;
 }
 
-double Order::getPrice()
+double Order::getPrice() const
 {
-	return this->m_price;
+	return m_price;
 }
 
-int Order::getVolume()
+int Order::getVolume() const
 {
-	return this->m_volume;
+	return m_volume;
 }
 
-std::string Order::getTicker()
+std::string Order::getTicker() const
 {
-	return this->m_ticker;
+	return m_ticker;
 }
 
-std::string Order::getClient()
+std::string Order::getClient() const
 {
-	return this->m_client;
+	return m_client;
 }
