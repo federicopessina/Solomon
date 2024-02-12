@@ -1,28 +1,26 @@
 #pragma once
 
 #include <vector>
-#include <queue>
-#include "CompareOrder.cpp"
 #include "Order.h"
 
 class Store
 {
 public:
+	/// <summary>
+	/// Constructor that heapifies the vector field.
+	/// </summary>
 	Store();
 	~Store();
 
-	void 
-	add(Order& order);
-	//const std::priority_queue<Order, std::vector<Order>, Comparer>& get() const; // TODO Implement.
-	Order get(std::string id);
-	void remove(Order order);
+	/// <summary>
+	/// Add element to store.
+	/// </summary>
+	/// <param name="order"></param>
+	/// <see href="https://en.cppreference.com/w/cpp/algorithm/push_heap">cppreference</see>
+	void add(Order order);
+	std::vector<Order> get();
+	//void remove(Order order);
 
-	std::priority_queue<Order, std::vector<Order>, Comparer> m_orders; // TODO Make private.
 private:
-};
-
-struct Comparer
-{
-public:
-	bool operator()(Order& a, Order& b);
+	std::vector<Order> m_orders;
 };

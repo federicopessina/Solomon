@@ -34,7 +34,7 @@ int Book::getVolumeAtPrice(double price, bool isBid)
 
 Order Book::match(Order order)
 {
-	return Order();
+	throw NULL;
 }
 
 void Book::place(Order order)
