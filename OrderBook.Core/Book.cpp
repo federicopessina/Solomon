@@ -1,8 +1,10 @@
-#include "Book.h"
 #include <iostream>
+#include "Book.h"
+#include "BookConsole.h"
 
 Book::Book()
 {
+
 }
 
 Book::~Book()
@@ -11,20 +13,24 @@ Book::~Book()
 
 void Book::add(Order order)
 {
-	if (order.getIsBuy())
-	{
-		m_bids.add(order);
-	}
-	else
-	{
-		m_asks.add(order);
-	}
+	bool isBuyOrder = order.getIsBuy();
+	
+	m_bids.add(order);
 }
 
 void Book::cancel(std::string id)
 {
-
 	return;
+}
+
+int Book::getBidsSize()
+{
+	return 0;
+}
+
+int Book::getAsksSize()
+{
+	return 0;
 }
 
 int Book::getVolumeAtPrice(double price, bool isBid)
@@ -32,13 +38,12 @@ int Book::getVolumeAtPrice(double price, bool isBid)
 	return 0;
 }
 
-Order Book::match(Order order)
+bool Book::match()
 {
-	throw NULL;
+	return true;
 }
 
-void Book::place(Order order)
+void Book::place(Order& bid, Order& ask)
 {
-	std::cout << "id" << order.getId() << std::endl;
-	// TODO Implement more.
+	BookConsole::place(bid, ask);
 }

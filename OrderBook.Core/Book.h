@@ -2,40 +2,28 @@
 
 #include <string>
 #include "Order.h"
-#include "Store.h"
-#include "Map.h"
+#include "VolumeMap.h"
+
 
 /// <summary>
 /// Data structure that store the Orders.
 /// </summary>
 class Book
 {
+private:
+	BidStore m_bids;
+
 public:
 	Book();
 	~Book();
 
-	/// <summary>
-	/// Takes an order object and either fill it or places it in the limit book.
-	/// </summary>
-	/// <param name="order"></param>
-	void Book::add(Order order);
-	/// <summary>
-	/// Cancel an order if it has not yet been filled, otherwise is a no-op.
-	/// </summary>
-	/// <param name="id"></param>
-	void Book::cancel(std::string id);
-	/// <summary>
-	/// Get volume of open order for either buying or selling side of order book.
-	/// </summary>
-	/// <param name="price"></param>
-	/// <param name="isBid"></param>
-	/// <returns></returns>
-	int Book::getVolumeAtPrice(double price, bool isBid);
-	Order match(Order order);
-	void place(Order order);
+	void add(Order order);
+	void cancel(std::string id);
+	int getBidsSize();
+	int getAsksSize();
+	int getVolumeAtPrice(double price, bool isBid);
+	bool match();
+	static void place(Order& ask, Order& bid);
 
-private:
-	Store m_bids;
-	Store m_asks;
-	Map map;
 };
+

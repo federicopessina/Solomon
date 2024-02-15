@@ -5,5 +5,7 @@ cmake_minimum_required (VERSION 3.8)
 
 project ("Solomon")
 
+
 # Include sub-projects.
-add_subdirectory ("OrderBook.Core")
+add_subdirectory (OrderBook.Core)
+add_subdirectory (OrderBook.Console)

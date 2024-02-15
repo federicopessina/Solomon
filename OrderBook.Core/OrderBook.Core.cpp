@@ -1,30 +1,57 @@
 ﻿// OrderBook.Core.cpp : Defines the entry point for the application.
 //
 
-#include "OrderBook.Core.h"
+#include <chrono>
+#include <random>
+#include <thread>
+#include "Book.h"
 #include "Order.h"
-#include "Store.h"
-
-using namespace std;
+#include "OrderBook.Core.h"
+#include "OrderConsole.h"
 
 int main()
 {
-	cout << "Hello Solomon Core." << endl;
+	std::cout << "Hello Solomon Core." << std::endl;
 
-	auto order2 = new Order("BBB", true, 111.0, 2, "BBBB", "bbb");
-	auto order3 = new Order("CCC", true, 222.0, 3, "CCCC", "ccc");
-	auto order1 = new Order("AAA", true, 100.0, 1, "AMZN", "aaa");
+	auto book = new Book();
 
-	auto store = new Store();
+	std::string ticker = "GOOG";						// Fixed ticker
 
-	store->add(*order3);
-	store->add(*order2);
-	store->add(*order1);
-
-	for (auto item : store->get())
+	while (true)
 	{
-		std::cout << item.getId() << std::endl;
+		wait();
+
+		// Random numbers generation.
+		int		randomId		= std::rand() % 999;	// Random int in range 0-999.
+		int		randomPrice		= std::rand() % 100;	// Random int in range 0-100.
+		bool	randomIsBuy		= std::rand() % 2;		// 1 is converted to true and 0 as false.
+		int		randomVolume	= std::rand() % 999;	// Random int in range 0-999.
+		int		randomClient	= std::rand() % 50;		// Random int in range 0-50.
+		
+		auto randomOrder = new Order(
+			std::to_string(randomId), 
+			randomIsBuy, 
+			(double)randomPrice,
+			randomVolume, ticker, 
+			std::to_string(randomClient));
+
+		OrderConsole::PrintOrder(*randomOrder);
+
+		book->add(*randomOrder);
+
+		auto isMatch = book->match();
+
 	}
 
 	return 0;
+}
+
+void wait()
+{
+	// Time waiter.
+	using namespace std::this_thread;				// sleep_for, sleep_until
+	using namespace std::chrono_literals;			// ns, us, ms, s, h, etc.
+	using std::chrono::system_clock;
+	std::this_thread::sleep_for(10ns);
+	std::this_thread::sleep_until(system_clock::now() + 1s);
 }

@@ -4,7 +4,7 @@ A Limit Order Book contains prices and corresponding volumnes (number of shares)
 - Bid side represents open offest to buy
 - Ask side represent open offers to sell
 - Trades are made when highest bid >= lowest ask (spread is crossed)
-	Price at which trade is executed is that of the trade already in hte order book
+	Price at which trade is executed is that of the trade already in the order book
 - Ifd client submits a buy or sell order that cannot be filled, iot gest stored in order bok
 - Orders are executed at the best possible price fist, and if many orders have the same price the one that was submitted
 earliest is chosen
@@ -29,14 +29,14 @@ In particular we want to have a heap of queues to take into account that, given 
 that came earlier.
 
 ## Getting Volume
-We need to be able to get the volume,k but it's important hta this call happens as fast as possible.
+We need to be able to get the volume, but it's important that this call happens as fast as possible.
 Right now we would have to loop through every element of a queue to sum up it's volume.
 But what if we kept a hashmap that kept track of the volume at each price, and incremented/decremented the volume
 counter when order were added and cancelled from the limit book?
 
 Then we would have O(1) time complexity for returning volume.
 
-The hashmap is goin to take a tuple like structure as a key that contains the price and side nad volume as value of hashmap.
+The hashmap is goin to take a tuple like structure as a key that contains the price side and volume as value of hashmap.
 Whenever we have a new order we can increment the volume in the hashmap for a given price and side.
 Insted if we have to delete an order form the order book we just decrement the value for the key.
 
