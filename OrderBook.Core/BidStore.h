@@ -6,14 +6,20 @@ struct PriceComparerLess
 {
 	bool operator()(const Order& lhs, const Order& rhs) const
 	{
-		return lhs.getPrice() < rhs.getPrice();
+		double lhsPrice = lhs.getPrice(), rhsPrice = rhs.getPrice();
+
+		if (lhsPrice < rhsPrice) return true;
+		if (lhsPrice > rhsPrice) return false;
+		if (lhs.getTimestamp() < rhs.getTimestamp()) return true;
+
+		return false;
 	}
 };
 
 class BidStore
 {
 private:
-	std::priority_queue<Order, std::vector<Order>, PriceComparerLess> m_orders;
+	std::priority_queue<Order, std::vector<Order>, PriceComparerLess> mOrders;
 
 public:
 	BidStore();
@@ -21,6 +27,7 @@ public:
 
 	void add(Order order);
 	bool isEmpty();
+	void removeTop();
 	int size();
 	Order top();
 };

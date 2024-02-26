@@ -10,24 +10,32 @@ BidStore::~BidStore()
 
 void BidStore::add(Order order)
 {
-	m_orders.push(order);
+	mOrders.push(order);
 }
 
 bool BidStore::isEmpty()
 {
-	if (m_orders.empty())
+	if (mOrders.empty())
 		return true;
 
 	return false;
 }
 
+void BidStore::removeTop()
+{
+	if (this->isEmpty())
+		return;
+
+	mOrders.pop();
+}
+
 int BidStore::size()
 {
-	return (int)m_orders.size();
+	return static_cast<int>(mOrders.size());
 }
 
 Order BidStore::top()
 {
-	Order result = m_orders.top();
+	Order result = mOrders.top();
 	return result;
 }

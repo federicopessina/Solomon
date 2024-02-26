@@ -2,8 +2,9 @@
 
 #include <string>
 #include "Order.h"
-#include "VolumeMap.h"
-
+#include "VolumeStore.h"
+#include "BidStore.h"
+#include "AskStore.h"
 
 /// <summary>
 /// Data structure that store the Orders.
@@ -11,7 +12,8 @@
 class Book
 {
 private:
-	BidStore m_bids;
+	BidStore mBids;
+	AskStore mAsks;
 
 public:
 	Book();
@@ -22,7 +24,7 @@ public:
 	int getBidsSize();
 	int getAsksSize();
 	int getVolumeAtPrice(double price, bool isBid);
-	bool match();
+	void match();
 	static void place(Order& ask, Order& bid);
 
 };

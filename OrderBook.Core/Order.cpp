@@ -5,13 +5,13 @@ Order::Order(std::string id, bool isBuy, double price, int volume, std::string t
 {
 	const auto now = std::chrono::system_clock::now();
 
-	this->m_id = id;
-	this->m_timestamp = std::chrono::system_clock::to_time_t(now);
-	this->m_isBuy = isBuy;
-	this->m_price = price;
-	this->m_volume = volume;
-	this->m_ticker = ticker;
-	this->m_client = client;
+	this->mId = id;
+	this->mTimestamp = std::chrono::system_clock::to_time_t(now);
+	this->mIsBuy = isBuy;
+	this->mPrice = price;
+	this->mVolume = volume;
+	this->mTicker = ticker;
+	this->mClient = client;
 }
 
 Order::~Order()
@@ -20,35 +20,35 @@ Order::~Order()
 
 std::string Order::getId() const
 {
-	return m_id;
+	return mId;
 }
 
 std::time_t Order::getTimestamp() const
 {
-	return m_timestamp;
+	return mTimestamp;
 }
 
 bool Order::getIsBuy() const
 {
-	return m_isBuy;
+	return mIsBuy;
 }
 
 double Order::getPrice() const
 {
-	return m_price;
+	return mPrice;
 }
 
 int Order::getVolume() const
 {
-	return m_volume;
+	return mVolume;
 }
 
 std::string Order::getTicker() const
 {
-	return m_ticker;
+	return mTicker;
 }
 
 std::string Order::getClient() const
 {
-	return m_client;
+	return mClient;
 }

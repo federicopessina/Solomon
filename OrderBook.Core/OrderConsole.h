@@ -7,7 +7,7 @@ public:
 	OrderConsole();
 	~OrderConsole();
 
-	static void PrintOrder(Order order);
+	static void print(Order order);
 
 private:
 

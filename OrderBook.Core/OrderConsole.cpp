@@ -9,7 +9,7 @@ OrderConsole::~OrderConsole()
 {
 }
 
-void OrderConsole::PrintOrder(Order order)
+void OrderConsole::print(Order order)
 {
 	std::cout << "************** New Order Arrived" << std::endl;
 	std::cout << "Id:		" << order.getId()		<< std::endl;

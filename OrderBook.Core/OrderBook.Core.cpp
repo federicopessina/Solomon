@@ -11,9 +11,10 @@
 
 int main()
 {
-	std::cout << "Hello Solomon Core." << std::endl;
+	std::cout << "Hello Solomon Core" << std::endl << std::endl;
 
 	auto book = new Book();
+	auto volumeStore = new VolumeStore();
 
 	std::string ticker = "GOOG";						// Fixed ticker
 
@@ -32,14 +33,20 @@ int main()
 			std::to_string(randomId), 
 			randomIsBuy, 
 			(double)randomPrice,
-			randomVolume, ticker, 
+			randomVolume,
+			ticker,
 			std::to_string(randomClient));
 
-		OrderConsole::PrintOrder(*randomOrder);
+		
+		if (volumeStore->contains(randomOrder->getId()))
+			continue;
+
+		OrderConsole::print(*randomOrder);
 
 		book->add(*randomOrder);
+		volumeStore->add(*randomOrder);
 
-		auto isMatch = book->match();
+		book->match();
 
 	}
 

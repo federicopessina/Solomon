@@ -4,6 +4,6 @@
 cmake_minimum_required (VERSION 3.8)
 
 # Add source to this project's executable.
-add_executable (OrderBook.Core "OrderBook.Core.cpp" "OrderBook.Core.h" "Order.h" "Order.cpp" "Book.cpp" "VolumeMap.h" "VolumeMap.cpp" "OrderConsole.h" "OrderConsole.cpp" "BookConsole.h" "BookConsole.cpp" "Exceptions/Store.Exception.h" "BidStore.h" "BidStore.cpp" "AskStore.h" "AskStore.cpp")
+add_executable (OrderBook.Core "OrderBook.Core.cpp" "OrderBook.Core.h" "Order.h" "Order.cpp" "Book.cpp" "VolumeStore.h" "VolumeStore.cpp" "OrderConsole.h" "OrderConsole.cpp" "BookConsole.h" "BookConsole.cpp" "Exceptions/Store.Exception.h" "BidStore.h" "BidStore.cpp" "AskStore.h" "AskStore.cpp"  "IVolumeMap.h")
 
 # TODO: Add tests and install targets if needed.

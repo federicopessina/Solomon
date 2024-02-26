@@ -10,23 +10,31 @@ AskStore::~AskStore()
 
 void AskStore::add(Order order)
 {
-	m_orders.push(order);
+	mOrders.push(order);
 }
 
 bool AskStore::isEmpty()
 {
-	if (m_orders.empty())
+	if (mOrders.empty())
 		return true;
 
 	return false;
 }
 
+void AskStore::removeTop()
+{
+	if (this->isEmpty())
+		return;
+
+	mOrders.pop();
+}
+
 int AskStore::size()
 {
-	return (int)m_orders.size();
+	return static_cast<int>(mOrders.size());
 }
 
 Order AskStore::top()
 {
-	return m_orders.top();
+	return mOrders.top();
 }

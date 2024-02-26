@@ -29,8 +29,10 @@ In particular we want to have a heap of queues to take into account that, given 
 that came earlier.
 
 ## Getting Volume
+We don't want to modify the state of an Order object except when it's removed for internal logic reasons.
+
 We need to be able to get the volume, but it's important that this call happens as fast as possible.
-Right now we would have to loop through every element of a queue to sum up it's volume.
+With a vector we would have to loop through every element of a queue to sum up it's volume.
 But what if we kept a hashmap that kept track of the volume at each price, and incremented/decremented the volume
 counter when order were added and cancelled from the limit book?
 
