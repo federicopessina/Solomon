@@ -60,3 +60,45 @@ Lazily mark order as cancelled, and if we come upon it thile trying to execute a
 when trying to fill a new order
 2. If we are not removing nodes from the head actively, there will be more nodes in the heap and adding and removing
 nodes from the heap will take longer as a result
+
+
+## Structure
+The project is organized with the following Directory structure:
+
+└── federicopessina-Solomon/
+    ├── README.md
+    ├── CMakeLists.txt
+    ├── CMakePresets.json
+    ├── OrderBook.Console/
+    │   ├── CMakeLists.txt
+    │   ├── OrderBook.Console.cpp
+    │   └── OrderBook.Console.h
+    ├── OrderBook.Core/
+    │   ├── AskStore.cpp
+    │   ├── AskStore.h
+    │   ├── BidStore.cpp
+    │   ├── BidStore.h
+    │   ├── Book.cpp
+    │   ├── Book.h
+    │   ├── BookConsole.cpp
+    │   ├── BookConsole.h
+    │   ├── CMakeLists.txt
+    │   ├── IVolumeMap.h
+    │   ├── Order.cpp
+    │   ├── Order.h
+    │   ├── OrderBook.Core.cpp
+    │   ├── OrderBook.Core.h
+    │   ├── OrderConsole.cpp
+    │   ├── OrderConsole.h
+    │   ├── VolumeStore.cpp
+    │   ├── VolumeStore.h
+    │   └── Exceptions/
+    │       ├── Store.Exception.cpp
+    │       └── Store.Exception.h
+    └── OrderBook.Core.Test/
+        ├── OrderBook.Core.Test.vcxproj
+        ├── packages.config
+        ├── pch.cpp
+        ├── pch.h
+        └── test.cpp
+
