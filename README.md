@@ -65,40 +65,41 @@ nodes from the heap will take longer as a result
 ## Structure
 The project is organized with the following Directory structure:
 
-└── federicopessina-Solomon/
-    ├── README.md
-    ├── CMakeLists.txt
-    ├── CMakePresets.json
-    ├── OrderBook.Console/
-    │   ├── CMakeLists.txt
-    │   ├── OrderBook.Console.cpp
-    │   └── OrderBook.Console.h
-    ├── OrderBook.Core/
-    │   ├── AskStore.cpp
-    │   ├── AskStore.h
-    │   ├── BidStore.cpp
-    │   ├── BidStore.h
-    │   ├── Book.cpp
-    │   ├── Book.h
-    │   ├── BookConsole.cpp
-    │   ├── BookConsole.h
-    │   ├── CMakeLists.txt
-    │   ├── IVolumeMap.h
-    │   ├── Order.cpp
-    │   ├── Order.h
-    │   ├── OrderBook.Core.cpp
-    │   ├── OrderBook.Core.h
-    │   ├── OrderConsole.cpp
-    │   ├── OrderConsole.h
-    │   ├── VolumeStore.cpp
-    │   ├── VolumeStore.h
-    │   └── Exceptions/
-    │       ├── Store.Exception.cpp
-    │       └── Store.Exception.h
-    └── OrderBook.Core.Test/
-        ├── OrderBook.Core.Test.vcxproj
-        ├── packages.config
-        ├── pch.cpp
-        ├── pch.h
-        └── test.cpp
+└── federicopessina-Solomon/<br/>
+    ├── README.md<br/>
+    ├── CMakeLists.txt<br/>
+    ├── CMakePresets.json<br/>
+    ├── OrderBook.Console/<br/>
+    │   ├── CMakeLists.txt<br/>
+    │   ├── OrderBook.Console.cpp<br/>
+    │   └── OrderBook.Console.h<br/>
+    ├── OrderBook.Core/<br/>
+    │   ├── AskStore.cpp<br/>
+    │   ├── AskStore.h<br/>
+    │   ├── BidStore.cpp<br/>
+    │   ├── BidStore.h<br/>
+    │   ├── Book.cpp<br/>
+    │   ├── Book.h<br/>
+    │   ├── BookConsole.cpp<br/>
+    │   ├── BookConsole.h<br/>
+    │   ├── CMakeLists.txt<br/>
+    │   ├── IVolumeMap.h<br/>
+    │   ├── Order.cpp<br/>
+    │   ├── Order.h<br/>
+    │   ├── OrderBook.Core.cpp<br/>
+    │   ├── OrderBook.Core.h<br/>
+    │   ├── OrderConsole.cpp<br/>
+    │   ├── OrderConsole.h<br/>
+    │   ├── VolumeStore.cpp<br/>
+    │   ├── VolumeStore.h<br/>
+    │   └── Exceptions/<br/>
+    │       ├── Store.Exception.cpp<br/>
+    │       └── Store.Exception.h<br/>
+    └── OrderBook.Core.Test/<br/>
+        ├── OrderBook.Core.Test.vcxproj<br/>
+        ├── packages.config<br/>
+        ├── pch.cpp<br/>
+        ├── pch.h<br/>
+        └── test.cpp<br/>
+
 
