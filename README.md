@@ -14,6 +14,12 @@ Ask Price: 1622.52 | Bid Price: 1622.51 | Spread: 0.01
 
 NOTE the design is inspired by the [Design A Limit Order Book](https://www.youtube.com/watch?v=nmYx6tQxtSs&t=10s)
 
+# Code
+
+##  Structure
+Checkout the structure of the solution in this visualizer
+https://www.readmecodegen.com/file-tree/github-file-tree-visualizer
+
 ## Data Structure for Limit Order
 The data structure we implement for the process of submitting a buy order should be:
 1. Check the lowest price of the sell side of the limit book
@@ -60,46 +66,3 @@ Lazily mark order as cancelled, and if we come upon it thile trying to execute a
 when trying to fill a new order
 2. If we are not removing nodes from the head actively, there will be more nodes in the heap and adding and removing
 nodes from the heap will take longer as a result
-
-
-## Structure
-The project is organized with the following Directory structure:
-
-└── federicopessina-Solomon/<br/>
-    ├── README.md<br/>
-    ├── CMakeLists.txt<br/>
-    ├── CMakePresets.json<br/>
-    ├── OrderBook.Console/<br/>
-    │   ├── CMakeLists.txt<br/>
-    │   ├── OrderBook.Console.cpp<br/>
-    │   └── OrderBook.Console.h<br/>
-    ├── OrderBook.Core/<br/>
-    │   ├── AskStore.cpp<br/>
-    │   ├── AskStore.h<br/>
-    │   ├── BidStore.cpp<br/>
-    │   ├── BidStore.h<br/>
-    │   ├── Book.cpp<br/>
-    │   ├── Book.h<br/>
-    │   ├── BookConsole.cpp<br/>
-    │   ├── BookConsole.h<br/>
-    │   ├── CMakeLists.txt<br/>
-    │   ├── IVolumeMap.h<br/>
-    │   ├── Order.cpp<br/>
-    │   ├── Order.h<br/>
-    │   ├── OrderBook.Core.cpp<br/>
-    │   ├── OrderBook.Core.h<br/>
-    │   ├── OrderConsole.cpp<br/>
-    │   ├── OrderConsole.h<br/>
-    │   ├── VolumeStore.cpp<br/>
-    │   ├── VolumeStore.h<br/>
-    │   └── Exceptions/<br/>
-    │       ├── Store.Exception.cpp<br/>
-    │       └── Store.Exception.h<br/>
-    └── OrderBook.Core.Test/<br/>
-        ├── OrderBook.Core.Test.vcxproj<br/>
-        ├── packages.config<br/>
-        ├── pch.cpp<br/>
-        ├── pch.h<br/>
-        └── test.cpp<br/>
-
-
