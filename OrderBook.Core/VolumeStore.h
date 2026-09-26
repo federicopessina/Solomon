@@ -10,8 +10,7 @@ private:
 	/// <summary>
 	/// Key that contains the Price and Side and Volume as value of Hashmap.
 	/// </summary>
-	//std::map<std::tuple<double, bool>, int> m;
-	std::unordered_map<std::string, int> mMap;
+	std::unordered_map<std::string, int> m_map_;
 public:
 	VolumeStore();
 	~VolumeStore();

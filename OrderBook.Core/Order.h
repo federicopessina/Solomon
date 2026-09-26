@@ -5,13 +5,13 @@
 class Order
 {
 private:
-	std::string	mId;
-	std::time_t	mTimestamp;
-	bool		mIsBuy;
-	double		mPrice;
-	int			mVolume;
-	std::string	mTicker;
-	std::string	mClient;
+	std::string	m_id_;
+	std::time_t	m_timestamp_;
+	bool		m_is_buy_;
+	double		m_price_;
+	int			m_volume_;
+	std::string	m_ticker_;
+	std::string	m_client_;
 
 public:
 	Order(std::string id, bool isBuy, double price, int volume, std::string ticker, std::string client);
