@@ -4,7 +4,8 @@
 cmake_minimum_required (VERSION 3.8)
 
 # Add source to this project's executable.
-add_executable (OrderBook.Console "OrderBook.Console.cpp" "OrderBook.Console.h")
+add_executable (OrderBook.Console "OrderBook.Console.cpp" "OrderBook.Console.h"
+        ../OrderBook.Core.Test/test.cpp)
 
 #include_directories(${CMAKE_SOURCE_DIR}/OrderBook.Core)
 
