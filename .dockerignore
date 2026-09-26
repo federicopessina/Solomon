@@ -1,0 +1,28 @@
+# CMake build directories
+build/
+cmake-build-debug/
+out/
+
+# Git
+.git/
+.gitignore
+
+# IDEs
+.idea/
+.vscode/
+
+# Compiled artifacts
+*.o
+*.obj
+*.a
+*.so
+*.dll
+*.exe
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# CMake generated files
+CMakeCache.txt
+CMakeFiles/

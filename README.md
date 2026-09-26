@@ -18,13 +18,15 @@ Ask Price: 1622.52 | Bid Price: 1622.51 | Spread: 0.01
 
 NOTE the design is inspired by the [Design A Limit Order Book](https://www.youtube.com/watch?v=nmYx6tQxtSs&t=10s)
 
-# Getting Started
+## Getting Started
 
-## Running Tests Locally
+### Running Locally
+
+#### Running Tests Locally
 
 The project uses **CMake** to build the project and **GoogleTest** to run the tests.
 
-### Prerequisites
+##### Prerequisites
 
 On Ubuntu/Debian, install the required dependencies:
 
@@ -33,7 +35,7 @@ sudo apt update
 sudo apt install build-essential cmake libgtest-dev
 ```
 
-### Build the project
+##### Build the Project
 
 From the root of the repository:
 
@@ -44,7 +46,7 @@ cmake --build build
 
 This creates the build directory and compiles the `OrderBook.Core` library, the GoogleTest executable, and the `OrderBook.Console` executable.
 
-### Run the tests
+##### Run the Tests
 
 Run all tests using CTest:
 
@@ -64,7 +66,7 @@ Test project /home/federico/repos/Solomon/build
 100% tests passed, 0 tests failed out of 6
 ```
 
-### Run GoogleTest directly
+##### Run GoogleTest Directly
 
 You can also run the test executable directly:
 
@@ -74,7 +76,7 @@ You can also run the test executable directly:
 
 This provides the full GoogleTest output, including the individual test suites and test cases.
 
-## Running the Order Book Console
+#### Running the Order Book Console
 
 The project includes a console application that continuously generates random orders and submits them to the order book.
 
@@ -89,7 +91,7 @@ The console uses:
 * The `Book` to store and match orders
 * The `VolumeStore` to track order IDs
 
-### Build the Console
+##### Build the Console
 
 If you have already built the project using:
 
@@ -107,7 +109,7 @@ cmake -S . -B build
 cmake --build build
 ```
 
-### Run the Console
+##### Run the Console
 
 From the root of the repository:
 
@@ -127,7 +129,7 @@ Hello Solomon Console
 
 A new order is generated approximately every second. Each order is added to the order book and the book attempts to match available buy and sell orders.
 
-### Stop the Console
+##### Stop the Console
 
 The console application runs continuously using a `while (true)` loop.
 
@@ -137,7 +139,7 @@ To stop it, press:
 Ctrl+C
 ```
 
-### Running the Console with CLion
+##### Running the Console with CLion
 
 The console can also be run directly from **CLion**.
 
@@ -153,7 +155,7 @@ Then click the green **Run ▶** button.
 
 The application will continuously generate orders until it is stopped using the **Stop** button in CLion.
 
-## Rebuild from scratch
+##### Rebuild from Scratch
 
 If you change the CMake configuration or encounter stale build files, remove the build directory and configure the project again:
 
@@ -175,7 +177,7 @@ or start the console:
 ./build/OrderBook.Console/OrderBook.Console
 ```
 
-### Running Tests with CLion
+##### Running Tests with CLion
 
 The project can also be opened directly in **CLion**.
 
@@ -195,17 +197,62 @@ CLion should automatically discover the individual GoogleTests, allowing you to 
 
 directly from the IDE using the green **Run ▶** icons.
 
+### Running with Docker
+
+Docker can be used to build and run the project without installing the project dependencies locally.
+
+#### Build the Docker Image
+
+From the root of the repository:
+
+```bash
+docker build -t solomon .
+```
+
+#### Run the Console
+
+```bash
+docker run --rm solomon
+```
+
+The console will continuously generate and process random orders.
+
+Press:
+
+```text
+Ctrl+C
+```
+
+to stop the container.
+
+#### Run the Tests
+
+Build the Docker image with the test target enabled:
+
+```bash
+docker build --build-arg BUILD_TESTING=ON -t solomon-tests .
+```
+
+Then run the tests:
+
+```bash
+docker run --rm solomon-tests \
+    ctest --test-dir /build --output-on-failure
+```
+
+This runs the GoogleTest suite inside the Docker container.
+
 ## Code
 
-## Structure
+### Structure
 
-Checkout the structure of the solution in this visualizer:
+Check out the structure of the solution in this visualizer:
 
 [readmecodegen visualizer](https://www.readmecodegen.com/file-tree/github-file-tree-visualizer)
 
 or open it in VSCode from the Browser with the dot (`.`) button of your keyboard from the code section of GitHub.
 
-## Data Structure for Limit Order
+### Data Structure for Limit Order
 
 The data structure we implement for the process of submitting a buy order should be:
 
@@ -222,7 +269,7 @@ Use a min heap to represent the sell side and a max heap to represent the buy si
 
 In particular, we want to have a heap of queues to take into account that, given equal prices, the order that was filled came earlier.
 
-## Getting Volume
+### Getting Volume
 
 We don't want to modify the state of an Order object except when it's removed for internal logic reasons.
 
@@ -240,14 +287,14 @@ Whenever we have a new order we can increment the volume in the hashmap for a gi
 
 Instead, if we have to delete an order from the order book, we just decrement the value for the key.
 
-### Cancellation
+#### Cancellation
 
 There are two possible ways to cancel an order:
 
 1. Active
 2. Lazy
 
-#### Active
+##### Active
 
 Actually removing the order from the limit book:
 
@@ -255,9 +302,9 @@ Actually removing the order from the limit book:
 2. A node is removed from the heap if the queue is empty, representing that the price of that queue is no longer at the head
 3. Queue time complexity can be mitigated if we use a doubly linked list hashmap so that we can get the order node and remove it from the linked list in O(1) time
 
-#### Lazy
+##### Lazy
 
 Lazily mark an order as cancelled, and if we come upon it while trying to execute a trade, we skip over the cancelled order.
 
 1. If there are many cancellations, we may have to skip a lot of potential orders because they were cancelled when trying to fill a new order
-2. If we are not removing nodes from the head actively, there will be more nodes in the heap, and adding and removing nodes from the heap will take longer as a result
+2. If we are not removing nodes from the head actively, there will be more nodes in the heap, and adding and removing nodes from the heap will take longer as a result.
