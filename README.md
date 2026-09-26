@@ -42,7 +42,7 @@ cmake -S . -B build
 cmake --build build
 ```
 
-This creates the build directory and compiles the `OrderBook.Core` library and the GoogleTest executable.
+This creates the build directory and compiles the `OrderBook.Core` library, the GoogleTest executable, and the `OrderBook.Console` executable.
 
 ### Run the tests
 
@@ -74,7 +74,86 @@ You can also run the test executable directly:
 
 This provides the full GoogleTest output, including the individual test suites and test cases.
 
-### Rebuild from scratch
+## Running the Order Book Console
+
+The project includes a console application that continuously generates random orders and submits them to the order book.
+
+The console uses:
+
+* A fixed ticker: `GOOG`
+* Random order IDs
+* Random prices
+* Random buy/sell sides
+* Random volumes
+* Random clients
+* The `Book` to store and match orders
+* The `VolumeStore` to track order IDs
+
+### Build the Console
+
+If you have already built the project using:
+
+```bash
+cmake -S . -B build
+cmake --build build
+```
+
+the console executable will already be available.
+
+If the project has not been built yet, run:
+
+```bash
+cmake -S . -B build
+cmake --build build
+```
+
+### Run the Console
+
+From the root of the repository:
+
+```bash
+./build/OrderBook.Console/OrderBook.Console
+```
+
+The application will start generating and processing orders continuously.
+
+You should see output similar to:
+
+```text
+Hello Solomon Console
+
+...
+```
+
+A new order is generated approximately every second. Each order is added to the order book and the book attempts to match available buy and sell orders.
+
+### Stop the Console
+
+The console application runs continuously using a `while (true)` loop.
+
+To stop it, press:
+
+```text
+Ctrl+C
+```
+
+### Running the Console with CLion
+
+The console can also be run directly from **CLion**.
+
+After opening the project and reloading the CMake configuration, select:
+
+```text
+OrderBook.Console
+```
+
+as the run configuration.
+
+Then click the green **Run ▶** button.
+
+The application will continuously generate orders until it is stopped using the **Stop** button in CLion.
+
+## Rebuild from scratch
 
 If you change the CMake configuration or encounter stale build files, remove the build directory and configure the project again:
 
@@ -82,7 +161,18 @@ If you change the CMake configuration or encounter stale build files, remove the
 rm -rf build
 cmake -S . -B build
 cmake --build build
+```
+
+After rebuilding, you can run the tests:
+
+```bash
 ctest --test-dir build --output-on-failure
+```
+
+or start the console:
+
+```bash
+./build/OrderBook.Console/OrderBook.Console
 ```
 
 ### Running Tests with CLion

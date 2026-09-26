@@ -1,14 +1,14 @@
-# CMakeList.txt : CMake project for OrderBook.Console, include source and define
-# project specific logic here.
-#
-cmake_minimum_required (VERSION 3.8)
+add_executable(OrderBook.Console
+        OrderBook.Console.cpp
+        OrderBook.Console.h
+)
 
-# Add source to this project's executable.
-add_executable (OrderBook.Console "OrderBook.Console.cpp" "OrderBook.Console.h"
-        ../OrderBook.Core.Test/test.cpp)
+target_link_libraries(OrderBook.Console
+        PRIVATE
+        OrderBook.Core
+)
 
-#include_directories(${CMAKE_SOURCE_DIR}/OrderBook.Core)
-
-# TODO: Add tests and install targets if needed.
-target_link_libraries (OrderBook.Core)
-
+target_include_directories(OrderBook.Console
+        PRIVATE
+        ${CMAKE_SOURCE_DIR}/OrderBook.Core
+)
