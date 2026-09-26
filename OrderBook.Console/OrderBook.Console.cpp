@@ -1,10 +1,13 @@
-﻿#include <chrono>
+﻿#include <iostream>
+#include <ostream>
 #include <random>
-#include <thread>
+
 #include "Book.h"
 #include "Order.h"
 #include "OrderBook.Core.h"
 #include "OrderConsole.h"
+#include "VolumeStore.h"
+#include "Wait.h"
 
 int main()
 {
@@ -48,14 +51,4 @@ int main()
 	}
 
 	return 0;
-}
-
-void wait()
-{
-	// Time waiter.
-	using namespace std::this_thread;				// sleep_for, sleep_until
-	using namespace std::chrono_literals;			// ns, us, ms, s, h, etc.
-	using std::chrono::system_clock;
-	std::this_thread::sleep_for(10ns);
-	std::this_thread::sleep_until(system_clock::now() + 1s);
 }
