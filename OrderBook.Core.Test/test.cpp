@@ -1,8 +1,9 @@
+#include <gtest/gtest.h>
 #include <string>
-#include "pch.h"
-#include "..\OrderBook.Core\Order.cpp"
-#include "..\OrderBook.Core\AskStore.cpp"
-#include "..\OrderBook.Core\BidStore.cpp"
+
+#include "Order.h"
+#include "AskStore.h"
+#include "BidStore.h"
 
 TEST(TestSuiteName, TestName) {
 	EXPECT_EQ(1, 1);
