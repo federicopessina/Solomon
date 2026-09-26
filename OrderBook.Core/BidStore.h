@@ -19,7 +19,7 @@ struct PriceComparerLess
 class BidStore
 {
 private:
-	std::priority_queue<Order, std::vector<Order>, PriceComparerLess> mOrders;
+	std::priority_queue<Order, std::vector<Order>, PriceComparerLess> m_orders_;
 
 public:
 	BidStore();

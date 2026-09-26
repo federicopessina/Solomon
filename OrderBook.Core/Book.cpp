@@ -13,11 +13,11 @@ void Book::add(Order order)
 {
 	if (order.getIsBuy())
 	{
-		mBids.add(order);
+		m_bids_.add(order);
 	}
 	else
 	{
-		mAsks.add(order);
+		m_asks_.add(order);
 	}
 }
 
@@ -28,12 +28,12 @@ void Book::cancel(std::string id)
 
 int Book::getBidsSize()
 {
-	return mBids.size();
+	return m_bids_.size();
 }
 
 int Book::getAsksSize()
 {
-	return mAsks.size();
+	return m_asks_.size();
 }
 
 int Book::getVolumeAtPrice(double price, bool isBid)
@@ -43,18 +43,18 @@ int Book::getVolumeAtPrice(double price, bool isBid)
 
 void Book::match()
 {
-	if (mBids.isEmpty() || mAsks.isEmpty())
+	if (m_bids_.isEmpty() || m_asks_.isEmpty())
 		return;
 
-	Order topBid = mBids.top(), topAsk = mAsks.top();
+	Order topBid = m_bids_.top(), topAsk = m_asks_.top();
 	int topBidVolume = topBid.getVolume(), topAskVolume = topAsk.getVolume();
 
 	if (topBid.getPrice() >= topAsk.getPrice())
 	{
 		place(topBid, topAsk);
 
-		mBids.removeTop();
-		mAsks.removeTop();
+		m_bids_.removeTop();
+		m_asks_.removeTop();
 
 		match();
 	}

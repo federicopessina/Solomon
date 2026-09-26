@@ -12,8 +12,8 @@
 class Book
 {
 private:
-	BidStore mBids;
-	AskStore mAsks;
+	BidStore m_bids_;
+	AskStore m_asks_;
 
 public:
 	Book();

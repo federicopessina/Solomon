@@ -19,7 +19,7 @@ struct PriceComparerMore
 class AskStore
 {
 private:
-	std::priority_queue<Order, std::vector<Order>, PriceComparerMore> mOrders;
+	std::priority_queue<Order, std::vector<Order>, PriceComparerMore> m_orders_;
 
 public:
 	AskStore();
