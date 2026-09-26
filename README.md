@@ -17,8 +17,9 @@ NOTE the design is inspired by the [Design A Limit Order Book](https://www.youtu
 # Code
 
 ##  Structure
-Checkout the structure of the solution in this visualizer
-https://www.readmecodegen.com/file-tree/github-file-tree-visualizer
+Checkout the structure of the solution in this visualizer 
+[readmecodegen visualizer](https://www.readmecodegen.com/file-tree/github-file-tree-visualizer)
+or open it in VSCode from the Browser with the dot (.) button of your keyboard from the code section of GitHub.
 
 ## Data Structure for Limit Order
 The data structure we implement for the process of submitting a buy order should be:
