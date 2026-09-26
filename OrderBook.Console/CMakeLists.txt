@@ -1,6 +1,8 @@
 add_executable(OrderBook.Console
         OrderBook.Console.cpp
         OrderBook.Console.h
+        Wait.cpp
+        Wait.h
 )
 
 target_link_libraries(OrderBook.Console
