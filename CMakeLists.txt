@@ -9,3 +9,4 @@ enable_testing()
 
 add_subdirectory(OrderBook.Core)
 add_subdirectory(OrderBook.Core.Test)
+add_subdirectory(OrderBook.Console)
